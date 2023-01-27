@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jroldan- <jroldan-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:47:05 by jroldan-          #+#    #+#             */
-/*   Updated: 2023/01/27 18:09:19 by jroldan-         ###   ########.fr       */
+/*   Updated: 2023/01/27 21:00:54 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[100];
-	char		line[50];
-	int			size_line;
+	static char	*buffer;
+	char		*line;
+
+	
 	
 }
 
@@ -23,3 +24,4 @@ char	*get_next_line(int fd)
 //La función read() de C devuelve el número de bytes leídos. Si no lee nada, devuelve 0.
 // Si se produce un error, devuelve -1.
 // Duda que tamaño tengo que dar al string que guarda la linea supongo que se determinara de forma dinámica
+#include "get_next_line.h"
