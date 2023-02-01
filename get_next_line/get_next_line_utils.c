@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 12:47:11 by jroldan-          #+#    #+#             */
-/*   Updated: 2023/01/27 22:14:48 by javier           ###   ########.fr       */
+/*   Created: 2023/02/01 22:44:47 by Jroldan-          #+#    #+#             */
+/*   Updated: 2023/02/01 22:44:51 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line.h"
 
@@ -56,3 +57,56 @@ void	*ft_calloc(size_t count, size_t size)
 }
 
 // strjoin strchr
+/**
+ * @def Reserva con malloc y devuelve una nueva string, formada por la 
+ * concatenación de ’s1’ y ’s2’.Devuelve el string nuevo null si falla la 
+ * reserva de memoria 
+ * 
+ * @param s1 -> primera string 
+ * @param s2 ->  string destino donde se concatena s1
+ * @return char* -> nueva string formada x concatenacion s2 y s1
+ */
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*s3;
+	size_t	lenght;
+	size_t	i;
+	size_t	j;
+
+	j = 0;
+	i = ft_strlen(s1);
+	lenght = ft_strlen(s2) + ft_strlen(s1) + 1;
+	s3 = (char *)malloc(lenght);
+	if (s3 == NULL)
+		return (NULL);
+	while (s1[j] != '\0')
+	{
+		s3[j] = s1[j];
+		j++;
+	}
+	i = 0;
+	while (s2[i] != '\0')
+	{
+		s3[j] = s2[i];
+		j++;
+		i++;
+	}
+	s3[j] = '\0';
+	return (s3);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	*scpy;
+
+	scpy = (char *)s;
+	if ((char)c == '\0')
+		return (&(scpy[ft_strlen(scpy)]));
+	while (*s != '\0')
+	{
+		if ((*s) == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	return (NULL);
+}

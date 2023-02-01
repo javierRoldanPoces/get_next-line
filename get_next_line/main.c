@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jroldan- <jroldan-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:46:55 by jroldan-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:26:43 by jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/01 23:06:30 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	int		fichero;
-	char	buf[100];
+	char	*buff;
 	int		len;
 
 	fichero = open("file.txt", O_RDONLY);
@@ -24,8 +24,11 @@ int	main(void)
 		printf("Error al abrir el fichero");
 		return (-1);
 	}		
-	len = read(fichero, buf, 100);
-	write(1, buf, len);
+	/*len = read(fichero, &buff, 50000);
+	write(1, *buff, len);
+	printf("%i", len);*/
+	get_next_line(fichero);
+	
 	close(fichero);
 	return (0);
 }
