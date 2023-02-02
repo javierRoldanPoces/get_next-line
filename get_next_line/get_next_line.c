@@ -6,30 +6,50 @@
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:47:05 by jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/01 23:37:30 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:23:33 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-static char	*read_buffer(int fd, char *buffer, char *readed)
+/*
+static char	*cpy_line(char *readed. char *line)
 {
 	int	i;
 	int	j;
-	int	count;
-	int	len;
 
 	i = 0;
 	j = 0;
-	count = 0;
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	while (readed[i] != '\n')
+	{
+		i++;
+	}
+	line = malloc(1, i + 1);
+	
+	while (i)
+}*/
+static char	*read_buffer(int fd, char *buffer, char *readed)
+{
+	int	len;
+
+	len = 1;
+	buffer = ft_calloc(BUFFER_SIZE, 1);
 	if (buffer == NULL)
 		return (NULL);
-	len = read(fd, buffer, BUFFER_SIZE);
-	readed = ft_strjoin(readed, buffer);
-	/*while (buffer[i] != '\n')
-		count++;*/
-	write(1, buffer, len);
+	if (!readed)
+	{
+		readed = calloc (1, 1);
+	}
+	while (len > 0)
+	{
+		if (len < 0)
+			return (NULL);
+		len = read(fd, buffer, BUFFER_SIZE);
+		readed = ft_strjoin(readed, buffer);
+		if ((ft_strchr(buffer, '\n')))
+			break ;
+	}
+	free(buffer);
+	printf("%s", readed);
 	return (readed);
 }
 
@@ -50,5 +70,5 @@ char	*get_next_line(int fd)
 // Duda que tamaño tengo que dar al string que guarda la linea supongo que se determinara de forma dinámica
 
 // linea 21  guardo los caracteres que leo por si es menor
-// sigurinte paso ver como incializo la static y ver cuando concateno diferenciando que se haya vuelto
+// siguiente paso ver como incializo la static y ver cuando concateno diferenciando que se haya vuelto
 // a llamar a gnl

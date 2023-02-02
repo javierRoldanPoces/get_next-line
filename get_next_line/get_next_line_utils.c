@@ -6,10 +6,9 @@
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:44:47 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/01 22:44:51 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:06:49 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
@@ -66,33 +65,33 @@ void	*ft_calloc(size_t count, size_t size)
  * @param s2 ->  string destino donde se concatena s1
  * @return char* -> nueva string formada x concatenacion s2 y s1
  */
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *readed, const char *buffer)
 {
-	char	*s3;
+	char	*jointed;
 	size_t	lenght;
 	size_t	i;
 	size_t	j;
 
 	j = 0;
-	i = ft_strlen(s1);
-	lenght = ft_strlen(s2) + ft_strlen(s1) + 1;
-	s3 = (char *)malloc(lenght);
-	if (s3 == NULL)
+	i = ft_strlen(readed);
+	lenght = ft_strlen(buffer) + ft_strlen(readed) + 1;
+	jointed = calloc(1, lenght);
+	if (jointed == NULL)
 		return (NULL);
-	while (s1[j] != '\0')
+	while (readed[j] != '\0')
 	{
-		s3[j] = s1[j];
+		jointed[j] = readed[j];
 		j++;
 	}
 	i = 0;
-	while (s2[i] != '\0')
+	while (buffer[i] != '\0')
 	{
-		s3[j] = s2[i];
+		jointed[j] = buffer[i];
 		j++;
 		i++;
 	}
-	s3[j] = '\0';
-	return (s3);
+	free(readed);
+	return (jointed);
 }
 
 char	*ft_strchr(const char *s, int c)
