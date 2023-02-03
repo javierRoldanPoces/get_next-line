@@ -6,7 +6,7 @@
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:44:47 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/02 18:06:49 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:45:47 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	*ft_memset(void *s, int c, size_t n)
 	return (s = scpy);
 }
 
-void	ft_bzero(void *s, size_t n)
+/*void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
 }
-
+*/
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*c;
@@ -51,7 +51,7 @@ void	*ft_calloc(size_t count, size_t size)
 	c = malloc(count * size);
 	if (c == NULL)
 		return (NULL);
-	ft_bzero(c, count * size);
+	ft_memset(c, 0, size);
 	return (c);
 }
 
@@ -108,4 +108,81 @@ char	*ft_strchr(const char *s, int c)
 		s++;
 	}
 	return (NULL);
+}
+/**
+ * @def Reserva con malloc(3) y devuelve substring de s,la substring empieza 
+ * 		desde el indice start, su longitud máx es len.
+ * @note Controlo que si el tam de origen-primera_posicion sea menor que 
+ * tamdestino en tal caso el tamaño	tamdestino(len)= tamorigen-primera 
+ * posicion si no lo hago no reservo bien la memoria.
+ * @param s String desde la que creamos la substring
+ * @param start Índice del caracter en s desde el que empezar la substring
+ * @param len longitud máxima de la substring
+ * @return char* La substring resultante Null si falla la reserva de memoria
+ */
+char	*ft_substr(char const *s, unsigned int start)
+{
+	char	*substring;
+	size_t	startcast;
+	size_t	tam;
+	size_t	len;
+
+	len = BUFFER_SIZE;
+	startcast = (size_t)start;
+	tam = 0;
+	if (ft_strlen(s) == 0)
+		return (ft_strdup(""));
+	if (ft_strlen(s) < startcast)
+		return (ft_strdup(""));
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	substring = (char *)malloc(sizeof(char) * (len + 1));
+	if (substring == NULL)
+		return (NULL);
+	while (tam < len)
+	{
+		substring[tam] = s[startcast];
+		tam++;
+		startcast++;
+	}
+	substring[tam] = '\0';
+	return (substring);
+}
+/**
+ * @def La función strdup() devuelve un puntero a la cadena duplicada, o NULL si 
+		no había bastante memoria La memoria para la nueva cadena se obtiene 
+		automáticamente con malloc(3) y puede(y debe) liberarse con free
+ * 
+ * @param s 
+ * @return char* Devuelve un puntero a una nueva cadena de caracteres que
+ *  es un duplicado de la cadena apuntada por s.
+ */
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	if (size > 0)
+	{
+		while (i < (size -1) && src[i] != '\0')
+		{	
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*cpys;
+	char	*d;
+
+	cpys = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (cpys == NULL)
+		return (NULL);
+	d = (char *)s;
+	ft_strlcpy(cpys, d, ft_strlen(s)+1);
+	return (cpys);
 }

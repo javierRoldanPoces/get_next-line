@@ -6,7 +6,7 @@
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:46:29 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/01 23:47:05 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/03 13:54:56 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(void)
 	write(1, *buff, len);
 	printf("%i", len);*/
 	get_next_line(fichero);
-	
+	get_next_line(fichero);
+	//get_next_line(fichero);
 	close(fichero);
 	return (0);
 }
