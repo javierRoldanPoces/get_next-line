@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:44:47 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/02 20:49:16 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:46:05 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ void	*ft_memset(void *s, int c, size_t n)
 	return (s = scpy);
 }
 
-/*void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, 0, n);
-}
-*/
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*c;
@@ -75,7 +70,7 @@ char	*ft_strjoin(char *readed, const char *buffer)
 	j = 0;
 	i = ft_strlen(readed);
 	lenght = ft_strlen(buffer) + ft_strlen(readed) + 1;
-	jointed = calloc(1, lenght);
+	jointed = ft_calloc(lenght , 1);
 	if (jointed == NULL)
 		return (NULL);
 	while (readed[j] != '\0')
@@ -120,24 +115,26 @@ char	*ft_strchr(const char *s, int c)
  * @param len longitud máxima de la substring
  * @return char* La substring resultante Null si falla la reserva de memoria
  */
-char	*ft_substr(char const *s, unsigned int start, size_t *len)
+char	*ft_substr(char const *s, unsigned int start)
 {
 	char	*substring;
 	size_t	startcast;
 	size_t	tam;
+	size_t	len;
 
+	len = BUFFER_SIZE;
 	startcast = (size_t)start;
 	tam = 0;
 	if (ft_strlen(s) == 0)
 		return (ft_strdup(""));
 	if (ft_strlen(s) < startcast)
 		return (ft_strdup(""));
-	if (ft_strlen(s) - start < *len)
-		*len = ft_strlen(s) - start;
-	substring = (char *)malloc(sizeof(char) * (*len + 1));
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	substring = (char *)malloc(sizeof(char) * (len + 1));
 	if (substring == NULL)
 		return (NULL);
-	while (tam < *len)
+	while (tam < len)
 	{
 		substring[tam] = s[startcast];
 		tam++;

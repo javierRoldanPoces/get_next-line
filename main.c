@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:46:29 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/02 20:09:54 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/05 20:33:17 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,13 @@ int	main(void)
 	write(1, *buff, len);
 	printf("%i", len);*/
 	get_next_line(fichero);
-	//get_next_line(fichero);
-	//get_next_line(fichero);
+	get_next_line(fichero);
+	get_next_line(fichero);
+	get_next_line(fichero);
+	get_next_line(fichero);
+	get_next_line(fichero);
+	get_next_line(fichero);
+	get_next_line(fichero);
 	close(fichero);
 	return (0);
 }
