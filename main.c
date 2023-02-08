@@ -6,7 +6,7 @@
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:46:29 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/08 12:50:07 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/08 18:22:13 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(void)
 	int		fichero;
 	char	*buff;
 	int		len;
+	char	*line;
 
 	fichero = open("file.txt", O_RDONLY);
 	if (fichero == -1)
@@ -24,9 +25,6 @@ int	main(void)
 		printf("Error al abrir el fichero");
 		return (-1);
 	}		
-	/*len = read(fichero, &buff, 50000);
-	write(1, *buff, len);
-	printf("%i", len);*/
 	get_next_line(fichero);
 	get_next_line(fichero);
 	get_next_line(fichero);
@@ -36,7 +34,8 @@ int	main(void)
 	get_next_line(fichero);
 	get_next_line(fichero);
 	get_next_line(fichero);
-	//get_next_line(fichero);
+	get_next_line(fichero);//10
+	get_next_line(fichero);
 	close(fichero);
 	return (0);
 }
