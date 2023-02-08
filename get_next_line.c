@@ -6,7 +6,7 @@
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:47:05 by jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/08 13:04:58 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:03:43 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ char	*read_buffer(int fd, char *readed)
 		return (NULL);
 	if (readed && (ft_strchr(readed, '\n')))
 		return (readed);
-	len = 1;
 	if (!readed)
 		readed = ft_calloc (BUFFER_SIZE + 1, sizeof(char));
 	if (readed == NULL)
 		return (NULL);
+	len = 1;
 	while ((len > 0) && !(ft_strchr(buffer_temp, '\n')))
 	{
 		if (len <= 0)
@@ -87,6 +87,8 @@ char	*read_buffer(int fd, char *readed)
 		buffer_temp[len] = '\0';
 		readed = ft_strjoin(readed, buffer_temp);
 	}
+	if(len == 0)
+		return (NULL);
 	free(buffer_temp);
 	return (readed);
 }
