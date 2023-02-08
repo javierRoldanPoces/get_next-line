@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:46:29 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/08 01:24:00 by javier           ###   ########.fr       */
+/*   Updated: 2023/02/08 12:50:07 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(void)
 	get_next_line(fichero);
 	get_next_line(fichero);
 	get_next_line(fichero);
+	//get_next_line(fichero);
 	close(fichero);
 	return (0);
 }
