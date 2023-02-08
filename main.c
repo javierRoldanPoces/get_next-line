@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:46:29 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/05 20:33:17 by javi             ###   ########.fr       */
+/*   Updated: 2023/02/08 01:24:00 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(void)
 	/*len = read(fichero, &buff, 50000);
 	write(1, *buff, len);
 	printf("%i", len);*/
+	get_next_line(fichero);
 	get_next_line(fichero);
 	get_next_line(fichero);
 	get_next_line(fichero);

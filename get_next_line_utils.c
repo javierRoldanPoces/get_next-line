@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:44:47 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/05 21:46:05 by javi             ###   ########.fr       */
+/*   Updated: 2023/02/08 01:26:38 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,9 @@ char	*ft_strjoin(char *readed, const char *buffer)
 		j++;
 		i++;
 	}
+	jointed[j] = '\0';
 	free(readed);
+	//free(buffer);
 	return (jointed);
 }
 
