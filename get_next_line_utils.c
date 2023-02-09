@@ -6,7 +6,7 @@
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 22:44:47 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/08 18:16:41 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:50:16 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_calloc(size_t count, size_t size)
 	return (c);
 }
 
-char	*ft_strjoin(char *readed, const char *buffer)
+char	*ft_strjoin(char *readed, char *buffer)
 {
 	char	*jointed;
 	size_t	lenght;
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *readed, const char *buffer)
 	j = 0;
 	i = ft_strlen(readed);
 	lenght = ft_strlen(buffer) + ft_strlen(readed) + 1;
-	jointed = ft_calloc(lenght , 1);
+	jointed = ft_calloc(lenght, 1);
 	if (jointed == NULL)
 		return (NULL);
 	while (readed[j] != '\0')

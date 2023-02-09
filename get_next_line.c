@@ -6,7 +6,7 @@
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:47:05 by jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/08 18:30:16 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:25:31 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ char	*clean_reader(char *readed)
 	i++;
 	j = 0;
 	while (readed[i])
-	{	
-		tmp[j] = readed[i];
-		j++;
-		i++;
-	}
+		tmp[j++] = readed[i++];
 	free(readed);
 	return (tmp);
 }
@@ -53,7 +49,7 @@ static char	*cpy_line(char *readed)
 		return (NULL);
 	while (readed[i] && readed[i] != '\n')
 		i++;
-	line = ft_calloc(i + 1, 1);
+	line = ft_calloc(i + 2, 1);
 	if (line == NULL)
 		return (NULL);
 	while (j <= i)
@@ -61,7 +57,13 @@ static char	*cpy_line(char *readed)
 		line[j] = readed[j];
 		j++;
 	}
-	line[j] = '\0';
+	//line[j] = '\0;
+	if (!line[0])
+	{
+		free(line);
+		//line = NULL;
+		return(NULL);
+	}
 	return (line);
 }
 
@@ -70,22 +72,28 @@ char	*read_buffer(int fd, char *readed)
 	int		len;
 	char	*buffer_temp;
 
-	buffer_temp = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (buffer_temp == NULL)
-		return (NULL);
 	if (readed && (ft_strchr(readed, '\n')))
 		return (readed);
 	if (!readed)
-		readed = ft_calloc (BUFFER_SIZE + 1, sizeof(char));
+		readed = ft_calloc (1, sizeof(char));
 	if (readed == NULL)
-		//free (readed);
+	{
+		free(readed);
+		return (NULL);
+	}
+	buffer_temp = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (buffer_temp == NULL)
 		return (NULL);
 	len = 1;
 	while ((len > 0) && !(ft_strchr(buffer_temp, '\n')))
 	{
-		if (len <= 0)
-			return (NULL);
 		len = read(fd, buffer_temp, BUFFER_SIZE);
+		if (len < 0)
+		{	
+			free(buffer_temp);
+			free(readed);
+			return (NULL);
+		}
 		buffer_temp[len] = '\0';
 		readed = ft_strjoin(readed, buffer_temp);
 	}
@@ -102,7 +110,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	readed = read_buffer(fd, readed);
 	if (!readed)
+	{	
+		free(readed);
 		return (NULL);
+	}
 	line = cpy_line(readed);
 	readed = clean_reader(readed);
 	//printf("line: %s", line);
