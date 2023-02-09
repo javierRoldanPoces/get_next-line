@@ -6,7 +6,7 @@
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:46:29 by Jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/08 18:22:13 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/09 18:47:22 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(void)
 	get_next_line(fichero);
 	get_next_line(fichero);
 	get_next_line(fichero);
-	get_next_line(fichero);//10
+	get_next_line(fichero);
 	get_next_line(fichero);
 	close(fichero);
 	return (0);

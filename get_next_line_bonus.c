@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Jroldan- <jroldan-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:47:05 by jroldan-          #+#    #+#             */
-/*   Updated: 2023/02/09 18:46:11 by Jroldan-         ###   ########.fr       */
+/*   Updated: 2023/02/09 18:36:07 by Jroldan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*clean_reader(char *readed)
 {
@@ -92,18 +92,18 @@ char	*read_buffer(int fd, char *readed)
 
 char	*get_next_line(int fd)
 {
-	static char		*readed;
+	static char		*readed[10240];
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
-	readed = read_buffer(fd, readed);
-	if (!readed)
+	readed[fd] = read_buffer(fd, readed[fd]);
+	if (!readed[fd])
 	{	
-		free(readed);
+		free(readed[fd]);
 		return (NULL);
 	}
-	line = cpy_line(readed);
-	readed = clean_reader(readed);
+	line = cpy_line(readed[fd]);
+	readed[fd] = clean_reader(readed[fd]);
 	return (line);
 }
